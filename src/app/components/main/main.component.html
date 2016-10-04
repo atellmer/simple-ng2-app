@@ -1,3 +1,16 @@
-<p>
-  main works!
-</p>
+<ul class="list">
+  <li 
+    *ngFor="let item of items" 
+    [@animateTrigger]="item.state"
+    (click)="clickHandler(item)"
+    class="item">
+    {{ item.name }}
+  </li>
+</ul>
+
+<div *ngIf="activeItem">
+  <img [src]="activeItem.image" *ngIf="activeItem.image">
+  <div class="name">name: {{ activeItem.name }}</div>
+  <div class="type" *ngIf="activeItem.type">type: {{ activeItem.type }}</div>
+  <div class="age" *ngIf="activeItem.age">age: {{ activeItem.age }}</div>
+</div>
