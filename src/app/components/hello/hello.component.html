@@ -1,0 +1,36 @@
+<form 
+  #f="ngForm" 
+  (submit)="SubmitHandler(f.value)" 
+  class="form">
+  <md-input 
+    placeholder="Login" 
+    align="start" 
+    name="login" 
+    ngModel>
+  </md-input>
+  <md-input 
+    placeholder="Pass" 
+    align="start" 
+    name="pass" 
+    ngModel>
+  </md-input>
+  <button type="submit" class="button">Submit</button>
+</form>
+
+<form 
+  [formGroup]="myForm" 
+  (submit)="SubmitHandler(myForm.value)" 
+  class="form">
+  <md-input 
+    placeholder="Login" 
+    align="start" 
+    [formControl]="myForm.controls['login']">
+  </md-input>
+  <md-input 
+    placeholder="Pass" 
+    align="start" 
+    type="password"
+    [formControl]="myForm.controls['pass']">
+  </md-input>
+  <button type="submit" class="button">Submit</button>
+</form>
