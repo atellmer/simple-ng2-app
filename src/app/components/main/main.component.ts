@@ -21,12 +21,16 @@ import { Human } from './main.model';
         backgroundColor: '#fff',
         transform: 'scale(1)'
       })),
-      state('active',   style({
+      state('active', style({
         backgroundColor: '#FCE4EC',
         transform: 'scale(1.01)'
       })),
-      transition('inactive => active', animate('300ms ease-in')),
-      transition('active => inactive', animate('300ms ease-out'))
+      transition('inactive => active', animate('300ms ease-in-out')),
+      transition('active => inactive', animate('300ms ease-in-out')),
+      transition('void => *', [
+        style({transform: 'translateX(-100%) scale(1)'}),
+        animate('300ms ease-in-out')
+      ]),
     ])
   ],
 })
