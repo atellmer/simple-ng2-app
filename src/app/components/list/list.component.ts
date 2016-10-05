@@ -62,4 +62,8 @@ export class ListComponent implements OnInit {
     item.state = 'active';
     this.selectedItem.emit(item);
   }
+
+  sayHelloToConsole() {
+    console.log('Hello from ListComponent!');
+  }
 }

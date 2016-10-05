@@ -1,7 +1,12 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  ElementRef
 } from '@angular/core';
+
+import { ListComponent } from '../list/list.component';
 
 import { Human } from '../../shared/human.model';
 
@@ -11,7 +16,10 @@ import { Human } from '../../shared/human.model';
   styleUrls: ['main.component.styl'],
   host: { 'class': 'router-view' },
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
+  @ViewChild('appList') listComponent: ListComponent;
+  @ViewChild('myBtn') elementRef: ElementRef;
+
   private items: Array<Human>;
   private activeItem: Human;
   public search: string = '';
@@ -25,7 +33,13 @@ export class MainComponent implements OnInit {
     ];
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log('button: ', this.elementRef.nativeElement);
+  }
+
+  ngAfterViewInit() {
+    this.listComponent.sayHelloToConsole();
+  }
 
   selectedItemHandler(item: Human) {
     this.activeItem = item;

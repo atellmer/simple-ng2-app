@@ -5,12 +5,13 @@
 </md-input>
 
 <app-list 
+  #appList
   [items]="items"
   [searchTerm]="search"
   (selectedItem)="selectedItemHandler($event)">
 </app-list>
 
-<button class="button" (click)="changeName()">Change Name</button>
+<button #myBtn class="button" (click)="changeName()">Change Name</button>
 
 <div *ngIf="activeItem">
   <img [src]="activeItem.image" *ngIf="activeItem.image">
