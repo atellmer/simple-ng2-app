@@ -11,6 +11,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { MainComponent } from './components/main/main.component';
 import { ColorDirective } from './directives/color.directive';
+import { SearchPipe } from './components/main/search.pipe';
+import { ListComponent } from './components/list/list.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { ColorDirective } from './directives/color.directive';
     AboutComponent,
     ToolBarComponent,
     MainComponent,
-    ColorDirective
+    ColorDirective,
+    SearchPipe,
+    ListComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

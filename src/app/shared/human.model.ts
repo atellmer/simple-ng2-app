@@ -5,8 +5,6 @@ export class Human {
   public state: string;
   public image: string;
   
-  
-  
   constructor(name: string, type: string, age: number, state: string, image?: string, ) {
     this.name = name;
     this.type = type;

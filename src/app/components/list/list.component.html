@@ -1,0 +1,9 @@
+<ul class="list">
+  <li 
+    *ngFor="let item of items | searchPipe : 'name' : searchTerm"  
+    [@animateTrigger]="item.state"
+    (click)="selectItem(item)"
+    class="item">
+    {{ item.name }}
+  </li>
+</ul>

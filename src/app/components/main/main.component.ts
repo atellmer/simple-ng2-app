@@ -1,44 +1,22 @@
-import { 
-  Component, 
-  OnInit,
-  trigger,
-  state,
-  style,
-  transition,
-  animate
+import {
+  Component,
+  OnInit
 } from '@angular/core';
 
-import { Human } from './main.model';
+import { Human } from '../../shared/human.model';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.styl'],
-  host: {'class': 'router-view'},
-  animations: [
-    trigger('animateTrigger', [
-      state('inactive', style({
-        backgroundColor: '#fff',
-        transform: 'scale(1)'
-      })),
-      state('active', style({
-        backgroundColor: '#FCE4EC',
-        transform: 'scale(1.01)'
-      })),
-      transition('inactive => active', animate('300ms ease-in-out')),
-      transition('active => inactive', animate('300ms ease-in-out')),
-      transition('void => *', [
-        style({transform: 'translateX(-100%) scale(1)'}),
-        animate('300ms ease-in-out')
-      ]),
-    ])
-  ],
+  templateUrl: 'main.component.html',
+  styleUrls: ['main.component.styl'],
+  host: { 'class': 'router-view' },
 })
 export class MainComponent implements OnInit {
   private items: Array<Human>;
   private activeItem: Human;
+  public search: string = '';
 
-  constructor() { 
+  constructor() {
     this.items = [
       new Human('Paul Wilaskes', 'normal', 26, 'inactive'),
       new Human('Alex Morales', 'normal', 30, 'inactive'),
@@ -47,18 +25,17 @@ export class MainComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  clickHandler(item: Human): void {
-    this.items = this.items.map((item) => {
-      if (item.state === 'active') {
-        item.state = 'inactive';
-      }
-      return item;
-    });
-
-    item.state = 'active';
+  selectedItemHandler(item: Human) {
     this.activeItem = item;
+  }
+
+  changeName() {
+    this.items[0].name = 'Barak Husein Obama';
+
+    //there need Immutable structure for changeDetection.onPush;
+    this.items = this.items.map(item => item); 
   }
 }
 

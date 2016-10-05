@@ -1,12 +1,16 @@
-<ul class="list">
-  <li 
-    *ngFor="let item of items" 
-    [@animateTrigger]="item.state"
-    (click)="clickHandler(item)"
-    class="item">
-    {{ item.name }}
-  </li>
-</ul>
+<md-input 
+    placeholder="Search" 
+    align="start" 
+    [(ngModel)]="search">
+</md-input>
+
+<app-list 
+  [items]="items"
+  [searchTerm]="search"
+  (selectedItem)="selectedItemHandler($event)">
+</app-list>
+
+<button class="button" (click)="changeName()">Change Name</button>
 
 <div *ngIf="activeItem">
   <img [src]="activeItem.image" *ngIf="activeItem.image">
