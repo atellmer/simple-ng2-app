@@ -1,7 +1,8 @@
 import { 
   Directive, 
   HostListener,
-  ElementRef
+  ElementRef,
+  Renderer
 } from '@angular/core';
 
 @Directive({
@@ -14,12 +15,12 @@ export class ColorDirective {
     this.toggle = !this.toggle;
 
     if (this.toggle) {
-      this.elementRef.nativeElement.style.backgroundColor = '#2196F3';
+      this.renderer.setElementStyle(this.elementRef.nativeElement, 'backgroundColor', '#2196F3');
     } else {
-      this.elementRef.nativeElement.style.backgroundColor = '#8BC34A';
+      this.renderer.setElementStyle(this.elementRef.nativeElement, 'backgroundColor', '#8BC34A');
     }
   }
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private renderer: Renderer) { }
 
 }
